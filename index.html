@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Laporan Keuangan • Pawon Mbah Gito | Mei 2026</title>
-  <!-- Font Awesome & Google Fonts -->
+  <!-- Google Fonts: Elegan + Modern -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
-  <!-- html2canvas + jspdf untuk export PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- html2canvas + jspdf -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+  </script>
   <style>
     * {
       margin: 0;
@@ -17,160 +21,180 @@
       box-sizing: border-box;
     }
     body {
-      background: #f5f2eb;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      padding: 20px;
-      color: #2e241b;
+      background: #faf7f2;
+      font-family: 'Inter', sans-serif;
+      padding: 24px;
+      color: #2c2416;
     }
     .dashboard {
-      max-width: 1400px;
+      max-width: 1450px;
       margin: 0 auto;
       background: #ffffff;
-      border-radius: 32px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      border-radius: 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
       overflow: hidden;
+      border: 1px solid #f0e8d9;
     }
     .header {
-      background: linear-gradient(135deg, #4a3320 0%, #6b4c32 100%);
-      color: white;
-      padding: 24px 32px;
+      background: #fffdf9;
+      border-bottom: 1px solid #e8dccb;
+      padding: 28px 36px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
     }
     .header-left h1 {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      color: #4d3822;
       letter-spacing: -0.5px;
+      margin-bottom: 4px;
     }
     .header-left .sub {
-      font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #8b7355;
+      font-style: italic;
     }
     .action-buttons {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
     .btn {
-      border: none;
+      border: 1px solid #dbcdb0;
       background: white;
-      color: #4a3320;
+      color: #4d3822;
       font-weight: 600;
-      padding: 12px 20px;
-      border-radius: 40px;
+      padding: 12px 24px;
+      border-radius: 50px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: all 0.25s ease;
       font-size: 0.9rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: #fefcf8;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .btn i { font-size: 1rem; }
+    .btn i {
+      font-size: 1rem;
+    }
     .btn:hover {
-      background: #f7efe2;
+      background: #f3ede2;
+      border-color: #b5976b;
       transform: translateY(-2px);
-      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 12px 18px rgba(0,0,0,0.06);
     }
     .btn-export {
-      background: #2e241b;
-      color: white;
+      background: #2c2416;
+      border-color: #2c2416;
+      color: #fef9f0;
     }
     .btn-export:hover {
       background: #1f1810;
+      color: white;
     }
     .content {
-      padding: 24px 28px;
+      padding: 32px 36px;
     }
     .section-title {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 1.5rem;
-      margin: 28px 0 16px 0;
-      color: #4a3320;
-      border-left: 8px solid #b6936c;
-      padding-left: 16px;
+      font-size: 1.8rem;
+      margin: 32px 0 20px 0;
+      color: #3e2f20;
+      border-left: 7px solid #c6a47e;
+      padding-left: 20px;
+      letter-spacing: -0.3px;
     }
     .grid-bahan {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 28px;
       margin-bottom: 20px;
     }
     .card {
-      background: #fefcf8;
-      border: 1px solid #ede3d3;
-      border-radius: 20px;
-      padding: 18px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+      background: #fffdf9;
+      border: 1px solid #ebe0cf;
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      transition: all 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
     }
     .card h3 {
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 14px;
-      color: #4a3320;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+      color: #4d3822;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.85rem;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
     }
     th {
-      background: #f3ede5;
-      padding: 10px 8px;
+      background: #f5efe4;
+      padding: 12px 8px;
       text-align: left;
       font-weight: 700;
-      color: #4a3320;
+      color: #3e2f20;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
     }
     td {
-      padding: 8px;
-      border-bottom: 1px solid #eee5d8;
+      padding: 10px 8px;
+      border-bottom: 1px solid #efe6d8;
     }
-    input, .editable-cell {
+    input {
       background: transparent;
-      border: 1px solid transparent;
-      padding: 6px 4px;
+      border: 1px solid #e0d3bd;
+      padding: 8px 8px;
       width: 100%;
-      font-family: inherit;
+      font-family: 'Inter', sans-serif;
       font-size: 0.85rem;
-      border-radius: 6px;
+      border-radius: 8px;
       transition: 0.2s;
+      background: #fffcf7;
     }
-    input:focus, .editable-cell:focus {
+    input:focus {
       outline: none;
       border-color: #b6936c;
-      background: #fffbf5;
-      box-shadow: 0 0 0 2px rgba(182,147,108,0.2);
+      background: #fff9f2;
+      box-shadow: 0 0 0 3px rgba(182,147,108,0.15);
     }
     .summary-row {
       font-weight: 700;
-      background: #f9f5ed;
+      background: #faf6ef;
+      color: #2e2416;
     }
     .balance-badge {
-      background: #d4edda;
-      color: #155724;
-      padding: 4px 12px;
+      background: #e0f0e3;
+      color: #1c4b2d;
+      padding: 6px 16px;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       display: inline-block;
+      letter-spacing: 0.3px;
     }
     .unbalance-badge {
-      background: #ffe2e2;
-      color: #a12b2b;
+      background: #ffedea;
+      color: #b13e3e;
     }
     .penjualan-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 28px;
     }
     .footer-note {
       margin-top: 30px;
@@ -178,21 +202,17 @@
       color: #8b7355;
       font-size: 0.9rem;
     }
-    /* PDF Export specific styling (hidden on web) */
+
+    /* PDF container tetap tersembunyi */
     #pdf-export-container {
       position: absolute;
       left: -9999px;
       top: 0;
-      width: 1000px;
+      width: 950px;
       background: white;
       font-family: 'Times New Roman', serif;
-      padding: 40px;
-      color: black;
-    }
-    @media print {
-      body * { visibility: hidden; }
-      #pdf-export-container, #pdf-export-container * { visibility: visible; }
-      #pdf-export-container { position: absolute; left: 0; top: 0; }
+      padding: 45px 50px;
+      color: #1e1e1e;
     }
   </style>
 </head>
@@ -201,49 +221,37 @@
   <div class="header">
     <div class="header-left">
       <h1>🍲 Pawon Mbah Gito</h1>
-      <div class="sub">Laporan Pembelian Bahan, Pemakaian & Penjualan • Mei 2026</div>
+      <div class="sub">Laporan Pembelian, Pemakaian & Penjualan — Mei 2026</div>
     </div>
     <div class="action-buttons">
       <button class="btn" id="saveDataBtn"><i class="fas fa-save"></i> Simpan Laporan</button>
-      <button class="btn btn-export" id="exportPdfBtn"><i class="fas fa-file-pdf"></i> Export PDF (Keuangan)</button>
+      <button class="btn btn-export" id="exportPdfBtn"><i class="fas fa-file-pdf"></i> Export PDF Keuangan</button>
     </div>
   </div>
-  <div class="content" id="webContent">
-    <!-- Dynamic tables will be injected by JavaScript -->
-  </div>
+  <div class="content" id="webContent"></div>
 </div>
 
-<!-- HIDDEN PDF EXPORT TEMPLATE (formal report) -->
+<!-- TEMPLATE PDF HIDDEN (lebih formal & menarik) -->
 <div id="pdf-export-container"></div>
 
 <script>
   (function() {
-    // ---------- DATA STRUCTURE ----------
+    // ---------- DATA DEFAULT ----------
     const defaultData = {
       tepungTerigu: {
-        nama: "TEPUNG TERIGU",
-        satuan: "karung",
-        satuanKecil: "kg",
+        nama: "TEPUNG TERIGU", satuan: "karung", satuanKecil: "kg",
         stokAwal: { jumlah: 10, pouch: 250, nominal: 1740000 },
-        pembelian: [
-          { tanggal: "20", jumlah: 7, pouch: 175, nominal: 1235500 }
-        ]
+        pembelian: [{ tanggal: "20", jumlah: 7, pouch: 175, nominal: 1235500 }]
       },
       minyakGoreng: {
-        nama: "MINYAK GORENG",
-        satuan: "dus",
-        satuanKecil: "pch",
-        stokAwal: { jumlah: 118, pouch: 688, nominal: 26832000 }, // 114+4 = 118 dus
-        pembelian: [
-          { tanggal: "20", jumlah: 40, pouch: 240, nominal: 10140000 }
-        ]
+        nama: "MINYAK GORENG", satuan: "dus", satuanKecil: "pch",
+        stokAwal: { jumlah: 118, pouch: 688, nominal: 26832000 },
+        pembelian: [{ tanggal: "20", jumlah: 40, pouch: 240, nominal: 10140000 }]
       },
       berasMerah: {
         nama: "BERAS MERAH", satuan: "kg", satuanKecil: null,
         stokAwal: { jumlah: 0, pouch: 0, nominal: 0 },
-        pembelian: [
-          { tanggal: "19", jumlah: 2, pouch: 0, nominal: 45000 }
-        ]
+        pembelian: [{ tanggal: "19", jumlah: 2, nominal: 45000 }]
       },
       berasPutih: {
         nama: "BERAS PUTIH", satuan: "kg", satuanKecil: null,
@@ -261,199 +269,85 @@
       gulaPasir: {
         nama: "GULA PASIR", satuan: "kg", satuanKecil: null,
         stokAwal: { jumlah: 444.28, pouch: 0, nominal: 7108480 },
-        pembelian: [
-          { tanggal: "20", jumlah: 250, nominal: 3960000 }
-        ],
-        pemakaianManual: 651  // termasuk qurban
+        pembelian: [{ tanggal: "20", jumlah: 250, nominal: 3960000 }],
+        pemakaianManual: 651
       }
     };
 
     const penjualanJajanan = [
-      { menu:"Lumpur Surga", porsi:318, nominal:2544000 },
-      { menu:"Clorot", porsi:203, nominal:1421000 },
-      { menu:"Lopis", porsi:205, nominal:922500 },
-      { menu:"Lemet", porsi:156, nominal:780000 },
-      { menu:"Tiwul,Gatot,Sawut", porsi:70, nominal:1050000 },
-      { menu:"Bolu Kukus", porsi:45, nominal:225000 },
-      { menu:"Pastel", porsi:33, nominal:165000 },
-      { menu:"Dadar Gulung", porsi:21, nominal:105000 },
-      { menu:"Nagasari", porsi:4, nominal:16000 },
-      { menu:"Bika Ambon", porsi:2, nominal:19000 },
-      { menu:"Getuk", porsi:2, nominal:9000 }
+      { menu:"Lumpur Surga", porsi:318, nominal:2544000 },{ menu:"Clorot", porsi:203, nominal:1421000 },{ menu:"Lopis", porsi:205, nominal:922500 },{ menu:"Lemet", porsi:156, nominal:780000 },{ menu:"Tiwul,Gatot,Sawut", porsi:70, nominal:1050000 },{ menu:"Bolu Kukus", porsi:45, nominal:225000 },{ menu:"Pastel", porsi:33, nominal:165000 },{ menu:"Dadar Gulung", porsi:21, nominal:105000 },{ menu:"Nagasari", porsi:4, nominal:16000 },{ menu:"Bika Ambon", porsi:2, nominal:19000 },{ menu:"Getuk", porsi:2, nominal:9000 }
     ];
     const penjualanJenang = [
-      { menu:"J. Mangkok", jumlah:669, nominal:8697000 },
-      { menu:"J. Piring", jumlah:3, nominal:60000 },
-      { menu:"J. Bungkus", jumlah:118, nominal:3186000 },
-      { menu:"Kolak", jumlah:15, nominal:195000 },
-      { menu:"Kolak TA", jumlah:3, nominal:81000 }
+      { menu:"J. Mangkok", jumlah:669, nominal:8697000 },{ menu:"J. Piring", jumlah:3, nominal:60000 },{ menu:"J. Bungkus", jumlah:118, nominal:3186000 },{ menu:"Kolak", jumlah:15, nominal:195000 },{ menu:"Kolak TA", jumlah:3, nominal:81000 }
     ];
     const penjualanKlethikan = [
-      { menu:"Peyek Kacang", jumlah:58, nominal:1450000 },
-      { menu:"Rambak Stick", jumlah:54, nominal:918000 },
-      { menu:"Karak", jumlah:28, nominal:476000 },
-      { menu:"Rengginang", jumlah:21, nominal:546000 },
-      { menu:"Slondok", jumlah:20, nominal:460000 },
-      { menu:"Amplang", jumlah:16, nominal:416000 },
-      { menu:"Peyek Rebon", jumlah:14, nominal:350000 },
-      { menu:"Stik Bawang", jumlah:8, nominal:184000 }
+      { menu:"Peyek Kacang", jumlah:58, nominal:1450000 },{ menu:"Rambak Stick", jumlah:54, nominal:918000 },{ menu:"Karak", jumlah:28, nominal:476000 },{ menu:"Rengginang", jumlah:21, nominal:546000 },{ menu:"Slondok", jumlah:20, nominal:460000 },{ menu:"Amplang", jumlah:16, nominal:416000 },{ menu:"Peyek Rebon", jumlah:14, nominal:350000 },{ menu:"Stik Bawang", jumlah:8, nominal:184000 }
     ];
     const penjualanSnack = [
-      { menu:"Pisang Goreng", jumlah:1899, nominal:34182000 },
-      { menu:"Mendoan", jumlah:787, nominal:13379000 },
-      { menu:"Bakwan Jagung", jumlah:707, nominal:12726000 },
-      { menu:"Telo Makrok", jumlah:207, nominal:3519000 },
-      { menu:"Tahu Tuna", jumlah:154, nominal:3696000 },
-      { menu:"Dimsum", jumlah:261, nominal:6787000 },
-      { menu:"Donat", jumlah:56, nominal:1792000 },
-      { menu:"Ubi Lumer", jumlah:132, nominal:2112000 },
-      { menu:"Spring Roll", jumlah:125, nominal:3000000 },
-      { menu:"French Fries", jumlah:187, nominal:4114000 },
-      { menu:"Roti Bakar Coklat Keju", jumlah:61, nominal:1792000 },
-      { menu:"Pisang Bakar Coklat Keju", jumlah:77, nominal:1617000 },
-      { menu:"Roti Bakar Hazelnut", jumlah:26, nominal:910000 },
-      { menu:"Chicken Wings", jumlah:60, nominal:2100000 },
-      { menu:"Pisang Bakar Original", jumlah:14, nominal:224000 },
-      { menu:"Roti Bakar Coklat", jumlah:12, nominal:420000 },
-      { menu:"Roti Bakar Keju", jumlah:3, nominal:105000 }
+      { menu:"Pisang Goreng", jumlah:1899, nominal:34182000 },{ menu:"Mendoan", jumlah:787, nominal:13379000 },{ menu:"Bakwan Jagung", jumlah:707, nominal:12726000 },{ menu:"Telo Makrok", jumlah:207, nominal:3519000 },{ menu:"Tahu Tuna", jumlah:154, nominal:3696000 },{ menu:"Dimsum", jumlah:261, nominal:6787000 },{ menu:"Donat", jumlah:56, nominal:1792000 },{ menu:"Ubi Lumer", jumlah:132, nominal:2112000 },{ menu:"Spring Roll", jumlah:125, nominal:3000000 },{ menu:"French Fries", jumlah:187, nominal:4114000 },{ menu:"Roti Bakar Coklat Keju", jumlah:61, nominal:1792000 },{ menu:"Pisang Bakar Coklat Keju", jumlah:77, nominal:1617000 },{ menu:"Roti Bakar Hazelnut", jumlah:26, nominal:910000 },{ menu:"Chicken Wings", jumlah:60, nominal:2100000 },{ menu:"Pisang Bakar Original", jumlah:14, nominal:224000 },{ menu:"Roti Bakar Coklat", jumlah:12, nominal:420000 },{ menu:"Roti Bakar Keju", jumlah:3, nominal:105000 }
     ];
     const penjualanAlacarte = [
-      { menu:"Bakmie Godog", porsi:405, nominal:13365000 },
-      { menu:"Bakmie Goreng", porsi:258, nominal:8514000 },
-      { menu:"Bakmie Campur", porsi:95, nominal:3135000 },
-      { menu:"Mie Lethek Godog", porsi:260, nominal:8580000 },
-      { menu:"Mie Lethek Goreng", porsi:73, nominal:2409000 },
-      { menu:"Kwetiau Goreng", porsi:125, nominal:4250000 },
-      { menu:"Nasgor PMG", porsi:352, nominal:11264000 },
-      { menu:"Nasgor Bebek", porsi:135, nominal:4860000 },
-      { menu:"Ayam Goreng", porsi:147, nominal:7938000 },
-      { menu:"Ayam Bakar", porsi:114, nominal:6270000 },
-      { menu:"Bebek Goreng", porsi:73, nominal:4088000 },
-      { menu:"Cordon Blue", porsi:58, nominal:3306000 },
-      { menu:"Rawon", porsi:121, nominal:7744000 },
-      { menu:"Wagyu Slice", porsi:66, nominal:3762000 },
-      { menu:"Sop Ayam", porsi:51, nominal:2448000 },
-      { menu:"Paket Syukur", porsi:12, nominal:4044000 },
-      { menu:"Paket Kembulan", porsi:8, nominal:2696000 }
+      { menu:"Bakmie Godog", porsi:405, nominal:13365000 },{ menu:"Bakmie Goreng", porsi:258, nominal:8514000 },{ menu:"Bakmie Campur", porsi:95, nominal:3135000 },{ menu:"Mie Lethek Godog", porsi:260, nominal:8580000 },{ menu:"Mie Lethek Goreng", porsi:73, nominal:2409000 },{ menu:"Kwetiau Goreng", porsi:125, nominal:4250000 },{ menu:"Nasgor PMG", porsi:352, nominal:11264000 },{ menu:"Nasgor Bebek", porsi:135, nominal:4860000 },{ menu:"Ayam Goreng", porsi:147, nominal:7938000 },{ menu:"Ayam Bakar", porsi:114, nominal:6270000 },{ menu:"Bebek Goreng", porsi:73, nominal:4088000 },{ menu:"Cordon Blue", porsi:58, nominal:3306000 },{ menu:"Rawon", porsi:121, nominal:7744000 },{ menu:"Wagyu Slice", porsi:66, nominal:3762000 },{ menu:"Sop Ayam", porsi:51, nominal:2448000 },{ menu:"Paket Syukur", porsi:12, nominal:4044000 },{ menu:"Paket Kembulan", porsi:8, nominal:2696000 }
     ];
 
     let currentData = JSON.parse(localStorage.getItem('pawonMbahGitoData')) || defaultData;
-    
+
     function saveToStorage() {
       localStorage.setItem('pawonMbahGitoData', JSON.stringify(currentData));
       alert('✅ Data laporan tersimpan di browser.');
     }
 
-    // ---------- HELPER: HITUNG BALANCE & RINGKASAN BAHAN ----------
-    function hitungBahan(bahan) {
-      const stok = bahan.stokAwal;
-      const beli = bahan.pembelian;
-      const totalJumlah = stok.jumlah + beli.reduce((s, b) => s + b.jumlah, 0);
-      const totalPouch = (stok.pouch || 0) + beli.reduce((s, b) => s + (b.pouch || 0), 0);
-      const totalNominal = stok.nominal + beli.reduce((s, b) => s + b.nominal, 0);
-      
-      let pemakaianJumlah = 0;
-      let sisaJumlah = 0;
-      if (bahan.pemakaianManual !== undefined) {
-        pemakaianJumlah = bahan.pemakaianManual;
-        sisaJumlah = totalJumlah - pemakaianJumlah;
-      } else {
-        // default: pemakaian = total - sisa (sisa berdasarkan input sisa terakhir?)
-        // Untuk fleksibilitas, kita akan hitung pemakaian dari selisih total dan sisa yang diedit user.
-        // Tapi di UI kita tampilkan field sisa yang bisa diedit -> pemakaian otomatis = total - sisa.
-      }
-      const balance = Math.abs((sisaJumlah + pemakaianJumlah) - totalJumlah) < 0.01;
-      return { totalJumlah, totalPouch, totalNominal, pemakaianJumlah, sisaJumlah, balance };
-    }
-
-    // ---------- RENDER WEB VIEW ----------
     function renderWeb() {
       const container = document.getElementById('webContent');
       let html = '';
-      
-      // BAHAN BAKU
       html += '<div class="section-title">📦 Pembelian & Pemakaian Bahan</div><div class="grid-bahan">';
-      const bahanKeys = ['tepungTerigu', 'minyakGoreng', 'berasMerah', 'berasPutih', 'gulaPasir'];
-      const bahanMap = {
-        tepungTerigu: currentData.tepungTerigu,
-        minyakGoreng: currentData.minyakGoreng,
-        berasMerah: currentData.berasMerah,
-        berasPutih: currentData.berasPutih,
-        gulaPasir: currentData.gulaPasir
-      };
-
-      for (let key of bahanKeys) {
-        const b = bahanMap[key];
+      const keys = ['tepungTerigu', 'minyakGoreng', 'berasMerah', 'berasPutih', 'gulaPasir'];
+      keys.forEach(key => {
+        const b = currentData[key];
         const stok = b.stokAwal;
-        const beli = b.pembelian;
-        const totalJml = stok.jumlah + beli.reduce((s,i)=>s+i.jumlah,0);
-        const totalPouch = (stok.pouch||0) + beli.reduce((s,i)=>s+(i.pouch||0),0);
-        const totalNom = stok.nominal + beli.reduce((s,i)=>s+i.nominal,0);
-        
-        html += `<div class="card" data-bahan="${key}">
-          <h3>${b.nama} <span style="font-size:0.8rem;">Mei 2026</span></h3>
-          <table><tr><th>Tanggal</th><th>Jumlah</th>${b.satuanKecil?`<th>${b.satuanKecil.toUpperCase()}</th>`:''}<th>Nominal</th></tr>`;
-        
-        html += `<tr><td>Sisa Apr</td>
-          <td><input class="edit-stok-jml" data-key="${key}" data-field="jumlah" type="number" step="any" value="${stok.jumlah}"></td>
-          ${b.satuanKecil ? `<td><input class="edit-stok-pouch" data-key="${key}" data-field="pouch" type="number" step="any" value="${stok.pouch||0}"></td>` : ''}
-          <td><input class="edit-stok-nom" data-key="${key}" data-field="nominal" type="number" value="${stok.nominal}"></td></tr>`;
-        
-        beli.forEach((item, idx) => {
-          html += `<tr><td>${item.tanggal}</td>
-            <td><input class="edit-beli-jml" data-key="${key}" data-idx="${idx}" type="number" step="any" value="${item.jumlah}"></td>
-            ${b.satuanKecil ? `<td><input class="edit-beli-pouch" data-key="${key}" data-idx="${idx}" type="number" step="any" value="${item.pouch||0}"></td>` : ''}
-            <td><input class="edit-beli-nom" data-key="${key}" data-idx="${idx}" type="number" value="${item.nominal}"></td></tr>`;
+        const totalJml = stok.jumlah + b.pembelian.reduce((s,i)=>s+i.jumlah,0);
+        const totalPouch = (stok.pouch||0) + b.pembelian.reduce((s,i)=>s+(i.pouch||0),0);
+        const totalNom = stok.nominal + b.pembelian.reduce((s,i)=>s+i.nominal,0);
+        html += `<div class="card"><h3>${b.nama} <span style="font-size:0.8rem; font-weight:500;">Mei 2026</span></h3><table><tr><th>Tanggal</th><th>Jumlah</th>${b.satuanKecil?`<th>${b.satuanKecil.toUpperCase()}</th>`:''}<th>Nominal</th></tr>`;
+        html += `<tr><td>Sisa Apr</td><td><input class="edit-stok-jml" data-key="${key}" data-field="jumlah" type="number" step="any" value="${stok.jumlah}"></td>${b.satuanKecil?`<td><input class="edit-stok-pouch" data-key="${key}" data-field="pouch" type="number" step="any" value="${stok.pouch||0}"></td>`:''}<td><input class="edit-stok-nom" data-key="${key}" data-field="nominal" type="number" value="${stok.nominal}"></td></tr>`;
+        b.pembelian.forEach((item, idx) => {
+          html += `<tr><td>${item.tanggal}</td><td><input class="edit-beli-jml" data-key="${key}" data-idx="${idx}" type="number" step="any" value="${item.jumlah}"></td>${b.satuanKecil?`<td><input class="edit-beli-pouch" data-key="${key}" data-idx="${idx}" type="number" step="any" value="${item.pouch||0}"></td>`:''}<td><input class="edit-beli-nom" data-key="${key}" data-idx="${idx}" type="number" value="${item.nominal}"></td></tr>`;
         });
-        
         html += `<tr class="summary-row"><td><strong>TOTAL</strong></td><td>${totalJml} ${b.satuan}</td>${b.satuanKecil?`<td>${totalPouch} ${b.satuanKecil}</td>`:''}<td>Rp ${totalNom.toLocaleString()}</td></tr>`;
-        
-        const sisaId = `sisa-${key}`;
-        const pemakaianId = `pakai-${key}`;
-        html += `<tr><td>SISA</td><td><input id="${sisaId}" class="sisa-input" data-key="${key}" type="number" step="any" value="${(b.sisaManual||0)}"></td>${b.satuanKecil?`<td></td>`:''}<td id="sisaNominal-${key}">Rp 0</td></tr>`;
-        html += `<tr><td>PEMAKAIAN</td><td id="${pemakaianId}">0</td>${b.satuanKecil?`<td></td>`:''}<td></td></tr>`;
-        html += `<tr><td colspan="4"><span id="balance-${key}" class="balance-badge">BALANCE ✅</span></td></tr>`;
-        html += `</table></div>`;
-      }
+        html += `<tr><td>SISA</td><td><input id="sisa-${key}" class="sisa-input" data-key="${key}" type="number" step="any" value="${b.sisaManual||0}"></td>${b.satuanKecil?'<td></td>':''}<td id="sisaNominal-${key}">Rp 0</td></tr>`;
+        html += `<tr><td>PEMAKAIAN</td><td id="pakai-${key}">0</td>${b.satuanKecil?'<td></td>':''}<td></td></tr>`;
+        html += `<tr><td colspan="4"><span id="balance-${key}" class="balance-badge">BALANCE ✅</span></td></tr></table></div>`;
+      });
       html += '</div>';
-
-      // PENJUALAN SECTION
-      html += '<div class="section-title">💰 Penjualan</div>';
-      const renderPenjualanTable = (title, data, isPorsi=true) => {
+      html += '<div class="section-title">💰 Penjualan</div><div class="penjualan-grid">';
+      const renderPenjualan = (title, data, isPorsi=true) => {
         let t = `<div class="card"><h3>${title}</h3><table><tr><th>No</th><th>Menu</th><th>${isPorsi?'Porsi':'Jumlah'}</th><th>Nominal</th></tr>`;
         let total = 0;
-        data.forEach((item, i) => {
-          t += `<tr><td>${i+1}</td><td>${item.menu}</td><td>${item.porsi||item.jumlah}</td><td>Rp ${item.nominal.toLocaleString()}</td></tr>`;
-          total += item.nominal;
-        });
+        data.forEach((item,i) => { t += `<tr><td>${i+1}</td><td>${item.menu}</td><td>${item.porsi||item.jumlah}</td><td>Rp ${item.nominal.toLocaleString()}</td></tr>`; total += item.nominal; });
         t += `<tr class="summary-row"><td colspan="3">TOTAL</td><td>Rp ${total.toLocaleString()}</td></tr></table></div>`;
         return t;
       };
-      
-      html += '<div class="penjualan-grid">';
-      html += renderPenjualanTable('🍡 Jajanan', penjualanJajanan);
-      html += renderPenjualanTable('🍮 Jenang', penjualanJenang, false);
-      html += renderPenjualanTable('🥨 Klethikan', penjualanKlethikan, false);
-      html += renderPenjualanTable('🍟 Snack', penjualanSnack, false);
-      html += renderPenjualanTable('🍽️ Alacarte', penjualanAlacarte);
+      html += renderPenjualan('🍡 Jajanan', penjualanJajanan);
+      html += renderPenjualan('🍮 Jenang', penjualanJenang, false);
+      html += renderPenjualan('🥨 Klethikan', penjualanKlethikan, false);
+      html += renderPenjualan('🍟 Snack', penjualanSnack, false);
+      html += renderPenjualan('🍽️ Alacarte', penjualanAlacarte);
       html += '</div>';
-      
       container.innerHTML = html;
-      attachEventListeners();
+      attachEvents();
       updateAllBalances();
     }
 
-    function attachEventListeners() {
-      document.querySelectorAll('.edit-stok-jml, .edit-stok-pouch, .edit-stok-nom, .edit-beli-jml, .edit-beli-pouch, .edit-beli-nom, .sisa-input').forEach(input => {
+    function attachEvents() {
+      document.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', function(e) {
           const key = this.dataset.key;
           const field = this.dataset.field;
           const idx = this.dataset.idx;
           const value = parseFloat(this.value) || 0;
-          
-          if (this.classList.contains('edit-stok-jml') || this.classList.contains('edit-stok-pouch') || this.classList.contains('edit-stok-nom')) {
+          if (this.classList.contains('edit-stok-jml')||this.classList.contains('edit-stok-pouch')||this.classList.contains('edit-stok-nom')) {
             currentData[key].stokAwal[field] = value;
-          } else if (this.classList.contains('edit-beli-jml') || this.classList.contains('edit-beli-pouch') || this.classList.contains('edit-beli-nom')) {
+          } else if (this.classList.contains('edit-beli-jml')||this.classList.contains('edit-beli-pouch')||this.classList.contains('edit-beli-nom')) {
             currentData[key].pembelian[idx][field] = value;
           } else if (this.classList.contains('sisa-input')) {
             currentData[key].sisaManual = value;
@@ -464,66 +358,25 @@
     }
 
     function updateAllBalances() {
-      const keys = ['tepungTerigu', 'minyakGoreng', 'berasMerah', 'berasPutih', 'gulaPasir'];
-      keys.forEach(key => {
+      ['tepungTerigu','minyakGoreng','berasMerah','berasPutih','gulaPasir'].forEach(key => {
         const b = currentData[key];
-        const stok = b.stokAwal;
-        const totalJml = stok.jumlah + b.pembelian.reduce((s,i)=>s+i.jumlah,0);
-        const sisaInput = document.getElementById(`sisa-${key}`);
-        let sisa = parseFloat(sisaInput?.value) || 0;
+        const totalJml = b.stokAwal.jumlah + b.pembelian.reduce((s,i)=>s+i.jumlah,0);
+        const sisa = parseFloat(document.getElementById(`sisa-${key}`)?.value) || 0;
         const pemakaian = totalJml - sisa;
         document.getElementById(`pakai-${key}`).innerText = pemakaian.toFixed(2);
-        const balance = Math.abs((sisa + pemakaian) - totalJml) < 0.01;
+        const balance = Math.abs((sisa+pemakaian)-totalJml) < 0.01;
         const badge = document.getElementById(`balance-${key}`);
-        if (badge) {
+        if(badge) {
           badge.textContent = balance ? 'BALANCE ✅' : 'TIDAK BALANCE ⚠️';
           badge.className = balance ? 'balance-badge' : 'balance-badge unbalance-badge';
         }
-        // estimasi nominal sisa (proporsional)
-        const totalNom = stok.nominal + b.pembelian.reduce((s,i)=>s+i.nominal,0);
-        const hargaPerUnit = totalJml ? totalNom / totalJml : 0;
-        document.getElementById(`sisaNominal-${key}`).innerText = 'Rp ' + Math.round(sisa * hargaPerUnit).toLocaleString();
+        const totalNom = b.stokAwal.nominal + b.pembelian.reduce((s,i)=>s+i.nominal,0);
+        document.getElementById(`sisaNominal-${key}`).innerText = 'Rp '+Math.round(sisa*(totalNom/totalJml)).toLocaleString();
       });
     }
 
-    // ---------- PDF EXPORT (FORMAL) ----------
     async function exportPDF() {
       const pdfContainer = document.getElementById('pdf-export-container');
-      let pdfHtml = `
-        <style>
-          body { font-family: 'Times New Roman', serif; padding: 30px; }
-          .kop { text-align: center; margin-bottom: 20px; }
-          .kop h2 { font-size: 22px; margin:0; } 
-          .line { border-top: 2px solid black; margin: 10px 0; }
-          table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 13px; }
-          th { background: #eee; border:1px solid black; padding:4px; }
-          td { border:1px solid black; padding:4px; }
-          .balance { color: green; font-weight: bold; }
-        </style>
-        <div class="kop">
-          <h2>PAWON MBAH GITO</h2>
-          <p>Laporan Pembelian Bahan & Penjualan - Mei 2026 (Bagian Keuangan)</p>
-        </div>
-        <div class="line"></div>
-        <h3>📦 Pembelian & Pemakaian Bahan</h3>
-      `;
-      
-      const keys = ['tepungTerigu','minyakGoreng','berasMerah','berasPutih','gulaPasir'];
-      keys.forEach(key=>{
-        const b = currentData[key];
-        pdfHtml += `<h4>${b.nama}</h4><table><tr><th>Tanggal</th><th>Jumlah</th><th>Nominal</th></tr>`;
-        pdfHtml += `<tr><td>Sisa April</td><td>${b.stokAwal.jumlah} ${b.satuan}</td><td>Rp ${b.stokAwal.nominal.toLocaleString()}</td></tr>`;
-        b.pembelian.forEach(p=> pdfHtml += `<tr><td>${p.tanggal}</td><td>${p.jumlah} ${b.satuan}</td><td>Rp ${p.nominal.toLocaleString()}</td></tr>`);
-        const totalJml = b.stokAwal.jumlah + b.pembelian.reduce((s,i)=>s+i.jumlah,0);
-        const totalNom = b.stokAwal.nominal + b.pembelian.reduce((s,i)=>s+i.nominal,0);
-        const sisa = parseFloat(document.getElementById(`sisa-${key}`)?.value) || 0;
-        pdfHtml += `<tr><td><strong>TOTAL</strong></td><td>${totalJml}</td><td>Rp ${totalNom.toLocaleString()}</td></tr>`;
-        pdfHtml += `<tr><td>SISA</td><td>${sisa}</td><td>Rp ${Math.round(sisa*(totalNom/totalJml)).toLocaleString()}</td></tr>`;
-        pdfHtml += `<tr><td>PEMAKAIAN</td><td>${(totalJml-sisa).toFixed(2)}</td><td></td></tr>`;
-        pdfHtml += `<tr><td colspan="3" class="balance">KETERANGAN : ${Math.abs(sisa+(totalJml-sisa)-totalJml)<0.01?'BALANCE':'TIDAK BALANCE'}</td></tr></table>`;
-      });
-      
-      pdfHtml += `<h3>💰 Total Penjualan</h3><table><tr><th>Kategori</th><th>Total</th></tr>`;
       const sums = {
         Jajanan: penjualanJajanan.reduce((s,i)=>s+i.nominal,0),
         Jenang: penjualanJenang.reduce((s,i)=>s+i.nominal,0),
@@ -531,25 +384,78 @@
         Snack: penjualanSnack.reduce((s,i)=>s+i.nominal,0),
         Alacarte: penjualanAlacarte.reduce((s,i)=>s+i.nominal,0)
       };
+      const grandTotal = Object.values(sums).reduce((a,b)=>a+b,0);
+      
+      let pdfHtml = `
+      <style>
+        body { font-family: 'Georgia', serif; margin:0; padding:35px; color:#2e2416; }
+        .kop { text-align:center; border-bottom:3px double #b5976b; padding-bottom:15px; margin-bottom:25px; }
+        .kop h2 { font-size:28px; margin:0; color:#4d3822; letter-spacing:1px; }
+        .kop p { font-style:italic; color:#5e4a34; }
+        h3 { color:#3e2f20; border-left:6px solid #c6a47e; padding-left:12px; }
+        table { width:100%; border-collapse:collapse; margin:18px 0; font-size:13px; }
+        th { background:#f3ede5; border:1px solid #c9b99a; padding:8px; font-weight:bold; }
+        td { border:1px solid #d6c8b2; padding:7px; }
+        .balance { color:#1c4b2d; font-weight:bold; }
+        .unbalance { color:#b13e3e; }
+        .total-row { background:#faf6ef; font-weight:bold; }
+      </style>
+      <div class="kop">
+        <h2>🍲 PAWON MBAH GITO</h2>
+        <p>Laporan Pembelian Bahan, Pemakaian & Penjualan — Mei 2026</p>
+        <p>Dokumen Resmi Bagian Keuangan</p>
+      </div>
+      <h3>📦 RINCIAN BAHAN</h3>
+      `;
+      
+      ['tepungTerigu','minyakGoreng','berasMerah','berasPutih','gulaPasir'].forEach(key => {
+        const b = currentData[key];
+        const totalJml = b.stokAwal.jumlah + b.pembelian.reduce((s,i)=>s+i.jumlah,0);
+        const totalNom = b.stokAwal.nominal + b.pembelian.reduce((s,i)=>s+i.nominal,0);
+        const sisa = parseFloat(document.getElementById(`sisa-${key}`)?.value) || 0;
+        const pemakaian = totalJml - sisa;
+        pdfHtml += `<h4>${b.nama}</h4><table><tr><th>Tanggal</th><th>Jumlah</th><th>Nominal</th></tr>`;
+        pdfHtml += `<tr><td>Sisa April</td><td>${b.stokAwal.jumlah} ${b.satuan}</td><td>Rp ${b.stokAwal.nominal.toLocaleString()}</td></tr>`;
+        b.pembelian.forEach(p => pdfHtml += `<tr><td>${p.tanggal}</td><td>${p.jumlah} ${b.satuan}</td><td>Rp ${p.nominal.toLocaleString()}</td></tr>`);
+        pdfHtml += `<tr class="total-row"><td>TOTAL</td><td>${totalJml} ${b.satuan}</td><td>Rp ${totalNom.toLocaleString()}</td></tr>`;
+        pdfHtml += `<tr><td>SISA</td><td>${sisa} ${b.satuan}</td><td>Rp ${Math.round(sisa*(totalNom/totalJml)).toLocaleString()}</td></tr>`;
+        pdfHtml += `<tr><td>PEMAKAIAN</td><td>${pemakaian.toFixed(2)} ${b.satuan}</td><td></td></tr>`;
+        pdfHtml += `<tr><td colspan="3" class="${Math.abs(sisa+pemakaian-totalJml)<0.01?'balance':'unbalance'}">KETERANGAN : ${Math.abs(sisa+pemakaian-totalJml)<0.01?'BALANCE':'TIDAK BALANCE'}</td></tr></table>`;
+      });
+      
+      pdfHtml += `<h3>💰 REKAP PENJUALAN</h3><table><tr><th>Kategori</th><th>Total Penjualan</th></tr>`;
       for(let [k,v] of Object.entries(sums)) pdfHtml += `<tr><td>${k}</td><td>Rp ${v.toLocaleString()}</td></tr>`;
-      pdfHtml += `<tr><td><strong>TOTAL KESELURUHAN</strong></td><td><strong>Rp ${Object.values(sums).reduce((a,b)=>a+b,0).toLocaleString()}</strong></td></tr></table>`;
-      pdfHtml += `<p style="margin-top:40px;">Diterbitkan oleh Bagian Keuangan, ${new Date().toLocaleDateString()}</p>`;
+      pdfHtml += `<tr class="total-row"><td><strong>TOTAL KESELURUHAN</strong></td><td><strong>Rp ${grandTotal.toLocaleString()}</strong></td></tr></table>`;
+      pdfHtml += `<p style="margin-top:35px; font-style:italic;">Dicetak oleh Bagian Keuangan, ${new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})}</p>`;
       
       pdfContainer.innerHTML = pdfHtml;
       
-      const canvas = await html2canvas(pdfContainer, { scale: 2 });
+      const canvas = await html2canvas(pdfContainer, { scale: 2, backgroundColor: '#ffffff' });
       const imgData = canvas.toDataURL('image/png');
       const { jsPDF } = window.jspdf;
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 210;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth - 20;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      let heightLeft = imgHeight;
+      let position = 10;
+      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+      heightLeft -= (pageHeight - 20);
+      
+      while (heightLeft > 0) {
+        position = -(pageHeight - 20) + 10;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
+        heightLeft -= (pageHeight - 20);
+      }
+      
       pdf.save('Laporan_Keuangan_Pawon_Mbah_Gito_Mei2026.pdf');
     }
 
     document.getElementById('saveDataBtn').addEventListener('click', saveToStorage);
     document.getElementById('exportPdfBtn').addEventListener('click', exportPDF);
-    
     renderWeb();
   })();
 </script>
